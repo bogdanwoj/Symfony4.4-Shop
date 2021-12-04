@@ -20,9 +20,8 @@ class ProductType extends AbstractType
             ->add('discount')
             ->add('category')
             ->add('vendor')
-//            ->add('file', FileType::class)
-            ->add('save', SubmitType::class)
-        ;
+            ->add('productImages', FileType::class, ['multiple' => true])
+            ->add('save', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

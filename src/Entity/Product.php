@@ -79,7 +79,22 @@ class Product
      */
     private $images;
 
-    private $file;
+    /**
+     * @Assert\All({
+     * @Assert\File(
+     *     maxSize = "2048k",
+     *     mimeTypes = {"image/png"},
+     *     mimeTypesMessage = "Please upload a valid Image"
+     * ),
+     * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 4000,
+     *     minHeight = 200,
+     *     maxHeight = 4000
+     * )
+     * })
+     */
+    private $productImages;
 
     /**
      * @ORM\OneToMany(targetEntity=CartItem::class, mappedBy="product")
@@ -217,23 +232,6 @@ class Product
         return $this->name;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
-     * @param mixed $file
-     * @return Product
-     */
-    public function setFile($file)
-    {
-        $this->file= $file;
-        return $this;
-    }
 
     /**
      * @return Collection|CartItem[]
@@ -294,6 +292,25 @@ class Product
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getProductImages()
+    {
+        return $this->productImages;
+    }
+
+    /**
+     * @param mixed $productImages
+     * @return Product
+     */
+    public function setProductImages($productImages)
+    {
+        $this->productImages = $productImages;
+        return $this;
+    }
+
 
 
 }

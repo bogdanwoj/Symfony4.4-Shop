@@ -19,6 +19,8 @@ use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use App\Repository\VendorRepository;
 use App\Entity\Image;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 /**
  * @Route("/crud/userProfile")
@@ -39,6 +41,7 @@ class CrudUserProfileController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/new", name="crud_user_profile_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager, CategoryRepository $categoryRepository, VendorRepository $vendorRepository, ProductRepository $productRepository): Response
@@ -64,6 +67,7 @@ class CrudUserProfileController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="crud_user_profile_show", methods={"GET"})
      */
     public function show(User $user, CategoryRepository $categoryRepository, VendorRepository $vendorRepository, ProductRepository $productRepository): Response
@@ -100,6 +104,7 @@ class CrudUserProfileController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="crud_user_profile_delete", methods={"POST"})
      */
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response

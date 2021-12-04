@@ -94,7 +94,7 @@ class CrudUserController extends AbstractController
             'user' => $user,
             'form' => $form->createView(),
             'categories' => $categoryRepository->findAll(),
-            'vendors'=>$vendorRepository->findAll(),
+            'vendors'=>$vendorRepository->findAll()
 
         ]);
     }

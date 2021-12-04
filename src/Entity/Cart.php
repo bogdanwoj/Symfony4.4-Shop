@@ -21,7 +21,6 @@ class Cart
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="carts")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 

@@ -26,7 +26,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $email;
+    private $email = '';
 
     /**
      * @ORM\Column(type="json")
@@ -37,7 +37,7 @@ class User implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
-    private $password;
+    private $password = '';
 
     /**
      * @Assert\Length(
@@ -207,9 +207,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function __toString() {
-        return $this->getUsername();
-    }
 
     /**
      * @return Collection|Address[]
@@ -301,7 +298,9 @@ class User implements UserInterface
         return $this;
     }
 
-
+    public function __toString() {
+        return $this->getUsername();
+    }
 
 
 }

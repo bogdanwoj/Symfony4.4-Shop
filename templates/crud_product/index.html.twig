@@ -6,27 +6,34 @@
 
     <a href="{{ url('admin') }}">< Back</a>
     <h1>Product List</h1>
-
     <table class="table">
-        <thead>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Discount</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for product in products %}
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Actions</th>
+            <td>{{ product.id }}</td>
+            <td>
+                <img width="40px" src="{{ asset('images/' ~ product.images.first) }}">
+            </td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.discount }}</td>
+            <td>
+                <a href="{{ path('crud_product_show', {'id': product.id}) }}">show</a>
+                <a href="{{ path('crud_product_edit', {'id': product.id}) }}">edit</a>
+            </td>
         </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.images.first }}</td>
-                <td>
-                    <a href="{{ path('crud_product_edit', {'id': product.id}) }}">edit</a>
-
-                </td>
-            </tr>
         {% else %}
             <tr>
                 <td colspan="3">no records found</td>

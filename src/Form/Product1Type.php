@@ -20,7 +20,7 @@ class Product1Type extends AbstractType
             ->add('discount')
             ->add('category')
             ->add('vendor')
-            ->add('file', FileType::class)
+            ->add('productImages',  FileType::class,['multiple' => true])
             ->add('save', SubmitType::class)
         ;
     }
